@@ -14,7 +14,7 @@ nose = cv2.CascadeClassifier('haar cascade files\haarcascade_mcs_nose.xml')
 
 model = load_model('models/cnncat2.h5')
 path = os.getcwd()
-# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_COMPLEX_SMALL
 count=0
 # ds_factor = 0.5
@@ -22,8 +22,8 @@ if mouth.empty():
   raise IOError('Unable to load the mouth cascade classifier xml file')
 # To detect face and eyes in static images comment line-16, rewrite line-24 as "img = cv2.imread("imagepath")" 
 while(True):
-    # ret, img = cap.read()
-    img = cv2.imread("image.jpg")
+    ret, img = cap.read()
+    # img = cv2.imread("image.jpg")
     # outpath = "image1.jpg"
     # cv2.imwrite(outpath,img,[int(cv2.IMWRITE_JPEG_QUALITY), 30])
     height,width = img.shape[:2]
