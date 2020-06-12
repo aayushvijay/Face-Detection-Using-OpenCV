@@ -17,9 +17,7 @@ path = os.getcwd()
 cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_COMPLEX_SMALL
 count=0
-# ds_factor = 0.5
-if mouth.empty():
-  raise IOError('Unable to load the mouth cascade classifier xml file')
+
 # To detect face and eyes in static images comment line-16, rewrite line-24 as "img = cv2.imread("imagepath")" 
 while(True):
     ret, img = cap.read()
@@ -47,6 +45,7 @@ while(True):
         for (ex,ey,ew,eh) in mouth_rects:
             cv2.rectangle(roi_color, (ex,ey), (ex+ew,ey+eh), (0,255,0), 1)
             cv2.putText(roi_color,'Mouth',(ex,ey-4),font,0.75,(0,0,255),1)
+    #Timer Code:
     # cv2.putText(img,'Timer:'+str(count),(10,height-20), font, 1,(0,0,255),1,cv2.LINE_AA)
     cv2.imshow('Face Detection',img)
     k = cv2.waitKey(30) & 0xff
